@@ -1,6 +1,6 @@
 package com.bank.card.repository;
 
-import com.bank.card.model.Transaction;
+import com.bank.card.model.entity.Transaction;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -45,5 +45,30 @@ public interface TransactionRepository extends JpaRepository<Transaction, Long> 
         @Param("cardId") Long cardId,
         @Param("start") LocalDateTime start,
         @Param("end") LocalDateTime end
+    );
+    @Query("""
+        SELECT COALESCE(SUM(t.amount), 0)
+        FROM Transaction t
+        WHERE t.sourceCard.id = :cardId
+        AND t.type = 'WITHDRAWAL'
+        AND t.timestamp BETWEEN :start AND :end
+        """)
+    Optional<BigDecimal> calculateDailyWithdrawals(
+            @Param("cardId") Long cardId,
+            @Param("start") LocalDateTime start,
+            @Param("end") LocalDateTime end
+    );
+
+    @Query("""
+        SELECT COALESCE(SUM(t.amount), 0)
+        FROM Transaction t
+        WHERE t.sourceCard.id = :cardId
+        AND t.type = 'WITHDRAWAL'
+        AND t.timestamp BETWEEN :start AND :end
+        """)
+    Optional<BigDecimal> calculateMonthlyWithdrawals(
+            @Param("cardId") Long cardId,
+            @Param("start") LocalDateTime start,
+            @Param("end") LocalDateTime end
     );
 }

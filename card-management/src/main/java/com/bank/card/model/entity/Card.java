@@ -1,5 +1,5 @@
-package com.bank.card.model;
-import com.bank.card.model.enums.CardLimits;
+package com.bank.card.model.entity;
+import com.bank.card.model.CardLimits;
 import com.bank.card.model.enums.CardStatus;
 import com.bank.card.converter.CardNumberEncryptor;
 import jakarta.persistence.*;

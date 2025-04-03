@@ -1,4 +1,4 @@
-package com.bank.card.model;
+package com.bank.card.model.entity;
 
 import com.bank.card.model.enums.Role;
 import jakarta.persistence.*;

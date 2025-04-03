@@ -1,4 +1,4 @@
-package com.bank.card.model;
+package com.bank.card.model.entity;
 import com.bank.card.model.enums.TransactionType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

@@ -1,4 +1,4 @@
-package com.bank.card.model.enums;
+package com.bank.card.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
