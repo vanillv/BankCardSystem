@@ -1,6 +1,11 @@
 spring:
+  application:
+           name: card-management
   threads:
     virtual:
       enabled: true
-  application:
-    name: card-management
+  jpa:
+    properties:
+      org.hibernate.envers:
+        store_data_at_delete: true
+        default_schema: audit
